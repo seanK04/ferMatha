@@ -1,0 +1,44 @@
+/* BlogList.css */
+.container {
+    padding: 2em;
+}
+
+.post-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin-left: 0;
+    margin-right: auto;
+    width: 100%;
+}
+
+.post-date {
+    font-size: 20px;
+    color: #888;
+    margin-left: auto;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-item {
+    margin-bottom: 20px;
+}
+
+.post-title:hover {
+    color: #007bff;
+}
