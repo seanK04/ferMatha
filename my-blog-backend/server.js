@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
@@ -33,6 +34,14 @@ app.get('/api/posts/:id', async (req, res) => {
     }
 });
 
-app.listen(5000, () => {
-    console.log('Server is running on port 5000');
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

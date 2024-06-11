@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.2",
     "katex": "^0.16.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -46,5 +47,10 @@
   "devDependencies": {
     "gh-pages": "^6.1.1"
   },
-  "homepage": "https://seanK04.github.io"
+  "homepage": "https://seanK04.github.io",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
