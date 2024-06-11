@@ -9,7 +9,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
 const postSchema = new mongoose.Schema({
     id: String,
@@ -27,7 +29,8 @@ app.get('/api/posts', async (req, res) => {
         const posts = await Post.find({});
         res.json(posts);
     } catch (error) {
-        res.status(500).send(error.message);
+        console.error('Error fetching posts:', error);
+        res.status(500).send('Server error');
     }
 });
 
@@ -41,7 +44,8 @@ app.get('/api/posts/:id', async (req, res) => {
         await post.save();
         res.json(post);
     } catch (error) {
-        res.status(500).send(error.message);
+        console.error('Error fetching post:', error);
+        res.status(500).send('Server error');
     }
 });
 
