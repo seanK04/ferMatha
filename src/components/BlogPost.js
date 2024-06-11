@@ -5,6 +5,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 import ImageRenderer from './ImageRenderer';
+import MathRenderer from './MathRenderer';
 
 const BlogPost = () => {
     const { postId } = useParams();
@@ -15,9 +16,10 @@ const BlogPost = () => {
             .then(res => {
                 fetch(res.default)
                     .then(response => response.text())
-                    .then(text => setContent(text));
+                    .then(text => setContent(text))
+                    .catch(err => console.error('Error fetching markdown file:', err));
             })
-            .catch(err => console.error(err));
+            .catch(err => console.error('Error importing markdown file:', err));
     }, [postId]);
 
     return (
@@ -26,7 +28,15 @@ const BlogPost = () => {
                 remarkPlugins={[remarkMath]}
                 rehypePlugins={[rehypeKatex]}
                 components={{
-                    img: ImageRenderer
+                    img: ImageRenderer,
+                    math: ({ value }) => {
+                        console.log('math value:', value);
+                        return <MathRenderer value={value} displayMode={true} />;
+                    },
+                    inlineMath: ({ value }) => {
+                        console.log('inlineMath value:', value);
+                        return <MathRenderer value={value} displayMode={false} />;
+                    }
                 }}
             >
                 {content}
