@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/ferMatha/static/css/main.5165a920.css",
-    "main.js": "/ferMatha/static/js/main.cdbe00f2.js",
-    "static/js/680.5c6bbb24.chunk.js": "/ferMatha/static/js/680.5c6bbb24.chunk.js",
+    "main.css": "/ferMatha/static/css/main.b4ea3b7e.css",
+    "main.js": "/ferMatha/static/js/main.79ad80e8.js",
+    "static/js/680.a3850071.chunk.js": "/ferMatha/static/js/680.a3850071.chunk.js",
     "static/js/813.f739a193.chunk.js": "/ferMatha/static/js/813.f739a193.chunk.js",
     "static/media/KaTeX_AMS-Regular.ttf": "/ferMatha/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/ferMatha/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
@@ -64,14 +64,14 @@
     "static/media/KaTeX_Size4-Regular.woff2": "/ferMatha/static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/KaTeX_Size3-Regular.woff": "/ferMatha/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/ferMatha/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
-    "static/media/post1.md": "/ferMatha/static/media/post1.a0b0fa88c8791c430133.md",
+    "static/media/post1.md": "/ferMatha/static/media/post1.d3c060f734d7f88f7694.md",
     "index.html": "/ferMatha/index.html",
     "static/media/post2.md": "/ferMatha/static/media/post2.4188de04e8f5107f160d.md",
-    "main.5165a920.css.map": "/ferMatha/static/css/main.5165a920.css.map",
-    "main.cdbe00f2.js.map": "/ferMatha/static/js/main.cdbe00f2.js.map"
+    "main.b4ea3b7e.css.map": "/ferMatha/static/css/main.b4ea3b7e.css.map",
+    "main.79ad80e8.js.map": "/ferMatha/static/js/main.79ad80e8.js.map"
   },
   "entrypoints": [
-    "static/css/main.5165a920.css",
-    "static/js/main.cdbe00f2.js"
+    "static/css/main.b4ea3b7e.css",
+    "static/js/main.79ad80e8.js"
   ]
 }
