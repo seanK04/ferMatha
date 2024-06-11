@@ -9,7 +9,11 @@ const BlogList = () => {
         const fetchPosts = async () => {
             try {
                 const response = await fetch('/api/posts');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 const data = await response.json();
+                console.log('Fetched posts:', data); // Add this line
                 setPosts(data);
             } catch (error) {
                 console.error('Error fetching posts:', error);

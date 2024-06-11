@@ -16,21 +16,22 @@ const postSchema = new mongoose.Schema({
     title: String,
     date: String,
     views: { type: Number, default: 0 },
+    content: String, // Ensure content field is included
 });
 
 const Post = mongoose.model('Post', postSchema);
 
-// Endpoint to get all posts
 app.get('/api/posts', async (req, res) => {
     try {
         const posts = await Post.find({});
+        console.log('Fetched posts:', posts); // Add this line
         res.json(posts);
     } catch (error) {
+        console.error('Error fetching posts:', error); // Add error log
         res.status(500).send(error.message);
     }
 });
 
-// Endpoint to get a single post by ID and increment its view count
 app.get('/api/posts/:id', async (req, res) => {
     try {
         const post = await Post.findOne({ id: req.params.id });
@@ -41,6 +42,7 @@ app.get('/api/posts/:id', async (req, res) => {
         await post.save();
         res.json(post);
     } catch (error) {
+        console.error('Error fetching post:', error); // Add error log
         res.status(500).send(error.message);
     }
 });
