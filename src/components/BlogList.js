@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './BlogList.css';
 
 const BlogList = () => {
-    const posts = [
-        { id: 'post2', title: 'Post 2', date: 'June 2, 2024' },
-        { id: 'post1', title: 'A Musical Series', date: 'June 1, 2024' }
-    ];
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const response = await fetch('/api/posts');
+                const data = await response.json();
+                setPosts(data);
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+            }
+        };
+
+        fetchPosts();
+    }, []);
 
     return (
         <div>
@@ -19,6 +30,7 @@ const BlogList = () => {
                             </Link>
                             <span className="post-date">{post.date}</span>
                         </div>
+                        <div className="post-views">Views: {post.views}</div>
                         <hr className="divider" />
                     </li>
                 ))}

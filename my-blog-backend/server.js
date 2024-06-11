@@ -20,6 +20,17 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model('Post', postSchema);
 
+// Endpoint to get all posts
+app.get('/api/posts', async (req, res) => {
+    try {
+        const posts = await Post.find({});
+        res.json(posts);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+// Endpoint to get a single post by ID and increment its view count
 app.get('/api/posts/:id', async (req, res) => {
     try {
         const post = await Post.findOne({ id: req.params.id });
