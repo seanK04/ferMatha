@@ -1,63 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { useParams } from 'react-router-dom';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import 'katex/dist/katex.min.css';
-import ImageRenderer from './ImageRenderer';
-import MathRenderer from './MathRenderer';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './BlogList.css';
 
-const BlogPost = () => {
-    const { postId } = useParams();
-    const [content, setContent] = useState('');
+const BlogList = () => {
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        const fetchPostContent = async () => {
+        const fetchPosts = async () => {
             try {
-                const response = await fetch(`/api/posts/${postId}`);
+                const response = await fetch('/api/posts');
                 const data = await response.json();
-                setContent(data.content);
+                setPosts(data);
             } catch (error) {
-                console.error('Error fetching post content:', error);
+                console.error('Error fetching posts:', error);
             }
         };
 
-        fetchPostContent();
-    }, [postId]);
-
-    useEffect(() => {
-        const incrementViews = async () => {
-            try {
-                await fetch(`/api/posts/${postId}`, {
-                    method: 'GET'
-                });
-            } catch (error) {
-                console.error('Error incrementing views:', error);
-            }
-        };
-
-        incrementViews();
-    }, [postId]);
+        fetchPosts();
+    }, []);
 
     return (
         <div>
-            <ReactMarkdown
-                remarkPlugins={[remarkMath]}
-                rehypePlugins={[rehypeKatex]}
-                components={{
-                    img: ImageRenderer,
-                    math: ({ value }) => {
-                        return <MathRenderer value={value} displayMode={true} />;
-                    },
-                    inlineMath: ({ value }) => {
-                        return <MathRenderer value={value} displayMode={false} />;
-                    }
-                }}
-            >
-                {content}
-            </ReactMarkdown>
+            <ul>
+                {posts.map(post => (
+                    <li key={post.id} className="post-item">
+                        <div className="post-header">
+                            <Link to={`/post/${post.id}`} className="post-title">
+                                {post.title}
+                            </Link>
+                            <span className="post-date">{post.date}</span>
+                        </div>
+                        <div className="post-views">Views: {post.views}</div>
+                        <hr className="divider" />
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
 
-export default BlogPost;
+export default BlogList;
